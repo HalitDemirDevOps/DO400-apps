@@ -1,0 +1,22 @@
+package com.redhat.shipping;
+
+public class ShippingCalculator {
+
+    public int costForRegion(String name) {
+    if (name.equals("NA")) {
+        return 100;
+    }
+    if (name.equals("LATAM")) {
+        return 200;
+    }
+    if (name.equals("EMEA")) {
+        return 300;
+    }
+    if (name.equals("APAC")) {
+        return 400;
+    }
+
+        return 0;
+    }
+    
+}
