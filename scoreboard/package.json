@@ -20,8 +20,8 @@
         "cypress": "^5.4.0"
     },
     "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
+        "start": "react-scripts --openssl-legacy-provider start",
+        "build": "react-scripts --openssl-legacy-provider build",
         "format": "prettier --write .",
         "test": "react-scripts test",
         "test:coverage": "cross-env CI=true npm run test --ci --coverage --collectCoverageFrom='src'",
