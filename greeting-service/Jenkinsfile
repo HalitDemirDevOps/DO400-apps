@@ -2,6 +2,11 @@ pipeline{
     agent{
         label "nodejs"
     }
+        environment {
+        OPENSHIFT_SERVER = "https://api.eu46r.prod.ole.redhat.com:6443/"
+        OPENSHIFT_TOKEN = credentials('Openshift-jenkins-account')
+        RHT_OCP4_DEV_USER = 'jenkins'
+    }
     stages{
         stage("Install dependencies"){
             steps{
@@ -24,8 +29,9 @@ pipeline{
         stage('Deploy') {
             steps {
                 sh '''
-                    oc project RHT_OCP4_DEV_USER-greetings
-                    oc start-build greeting-service --follow --wait
+                    oc login --token=${OPENSHIFT_TOKEN} --server=${OPENSHIFT_SERVER}
+                    oc project jenkins
+                    oc start-build greeting-service-7 --follow --wait
                 '''
             }
         }
